@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class IndexControll {
-    final String view = "user/";
+public class IndexController {
+    final String view = "admin/";
+
     @GetMapping("")
     public String homePage() {
-        return view +"index";
+        return view +"user";
     }
 
 
