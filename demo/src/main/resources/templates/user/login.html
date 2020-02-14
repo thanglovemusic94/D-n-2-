@@ -35,7 +35,7 @@
 
                                         <div class="space-6"></div>
 
-                                        <form id="form_data" action="/perform_login" method="post">
+                                        <form action="/login" method="post">
                                             <fieldset>
                                                 <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -257,38 +257,6 @@
         </div><!-- /.main-content -->
     </div><!-- /.main-container -->
 </section>
-
-<script type="text/javascript" layout:fragment="script">
-
-    $(document).ready(function () {
-
-        var data = {}
-        data["username"] = $("#username").val();
-        data["password"] = $("#password").val();
-        var fd = new FormData();
-        fd.append( 'username', 'user1' );
-        fd.append( 'password', 'user1Pass' );
-
-        // $("#login").click(function (e) {
-        //     e.preventDefault();
-        //     $.ajax({
-        //         type:"POST",
-        //         processData: false,
-        //         contentType: false,
-        //         url: "/perform_login",
-        //         data: fd,
-        //         dataType: 'json',
-        //         success: function (result) {
-        //             console.log(result);
-        //             // $("#div1").html(result);
-        //         },error : function(e) {
-        //             alert('Error: ' + e);
-        //         }
-        //     });
-        });
-    });
-
-</script>
 
 
 </body>
