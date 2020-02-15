@@ -47,8 +47,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
             "/font-awesome/**",
             "/font/**",
             "/swf/**",
+
             "/login*",
-            "/",
+            "/api/**",
+            "/**",
+
 
     };
 
@@ -62,10 +65,12 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated()
                 .and()
+
                 .formLogin()
                 .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .loginProcessingUrl("/perform_login")
+                .loginProcessingUrl("/login")       // link to submit username-password
+                .usernameParameter("username")      // username field in login form
+                .passwordParameter("password")      // password field in login form
                 .successHandler(myAuthenticationSuccessHandler())
 
                 .failureUrl("/login.html?error=true")
@@ -73,7 +78,8 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/perform_logout")
-//                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
 //                .logoutSuccessHandler(logoutSuccessHandler())
 
         ;

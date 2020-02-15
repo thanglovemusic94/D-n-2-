@@ -23,15 +23,10 @@ public class HomeController {
         return view +"login";
     }
 
+
     @GetMapping("/about")
     public String about() {
         return "about";
     }
 
-//    @PostMapping("/perform_login")
-//    @ResponseBody
-//    public RedirectView login_ajax(User user) {
-//
-//        return  new RedirectView("/admin");
-//    }
 }

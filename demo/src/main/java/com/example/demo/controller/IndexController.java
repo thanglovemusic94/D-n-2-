@@ -14,6 +14,11 @@ public class IndexController {
         return view +"user";
     }
 
+//    @GetMapping("/logout")
+//    public String login() {
+//        return view +"logout";
+//    }
+
 
     @GetMapping("/contact")
     public String contactPage() {
