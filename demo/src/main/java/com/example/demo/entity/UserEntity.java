@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,5 +27,6 @@ public class UserEntity implements Serializable {
     private String avatar;
 
     @Column(name = "create_time")
+    @CreationTimestamp
     private Timestamp createtime;
 }

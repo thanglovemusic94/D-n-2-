@@ -20,30 +20,39 @@ public class UserSerciveImpl implements UserSercive {
 
 
     @Override
-    public List<UserDTO> findAllUser() {
+    public List<UserDTO> findAll() {
         List<UserDTO> listDTO = new ArrayList<>();
         List<UserEntity> listEntity = userRepository.findAll();
         for (UserEntity entity : listEntity) {
-            listDTO.add(Converter.convertToDTO(entity));
+            listDTO.add(Converter.toDTO(entity));
         }
         return listDTO;
     }
 
     @Override
     public Optional<UserDTO> findById(Integer id) {
-        return Optional.empty();
+        UserEntity userEntity = userRepository.findById(id).get();
+        UserDTO userDTO = Converter.toDTO(userEntity);
+        return Optional.ofNullable(userDTO);
     }
 
     @Override
     public UserDTO save(UserDTO userDTO) {
-        UserEntity userEntity = Converter.convertToEntity(userDTO);
-        userEntity = userRepository.save(userEntity);
+        UserEntity userEntity = Converter.toEntity(userDTO);
+        userRepository.save(userEntity);
         userDTO.setId(userEntity.getId());
         return userDTO;
     }
 
     @Override
-    public void delete(UserDTO UserDTO) {
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
+    }
 
+    @Override
+    public void deleteAll(List<String> ids) {
+        for (String id: ids) {
+            userRepository.deleteById(Integer.valueOf(id));
+        }
     }
 }

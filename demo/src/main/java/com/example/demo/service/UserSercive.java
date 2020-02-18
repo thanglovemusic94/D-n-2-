@@ -8,8 +8,9 @@ import java.util.Optional;
 
 
 public interface UserSercive {
-    List<UserDTO> findAllUser();
+    List<UserDTO> findAll();
     Optional<UserDTO> findById(Integer id);
     UserDTO save(UserDTO UserDTO);
-    void delete(UserDTO UserDTO);
+    void delete(Integer id);
+    void deleteAll(List<String> ids);
 }
