@@ -37,6 +37,13 @@ public class UserSerciveImpl implements UserSercive {
     }
 
     @Override
+    public Optional<UserDTO> findByUsername(String username) {
+        UserEntity userEntity = userRepository.findByUsername(username);
+        UserDTO userDTO = Converter.toDTO(userEntity);
+        return Optional.ofNullable(userDTO);
+    }
+
+    @Override
     public UserDTO save(UserDTO userDTO) {
         UserEntity userEntity = Converter.toEntity(userDTO);
         userRepository.save(userEntity);

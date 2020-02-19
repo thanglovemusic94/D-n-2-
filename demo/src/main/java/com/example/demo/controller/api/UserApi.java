@@ -5,6 +5,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserSercive;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,26 +27,25 @@ public class UserApi {
     @GetMapping("/{id}")
     public UserDTO findById(@PathVariable Integer id) {
         Optional<UserDTO> userDTO = userSercive.findById(id);
-        if (!userDTO.isPresent()) {
-            System.out.println(" id  is not existed");
-        }
         return userDTO.get();
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public UserDTO save(@RequestBody UserDTO dto) {
-
         return userSercive.save(dto);
     }
 
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public UserDTO update(@PathVariable Integer id, @RequestBody UserDTO dto){
         Optional<UserDTO> userDTO = userSercive.findById(id);
         if (!userDTO.isPresent()) {
             System.out.println(" id  is not existed");
         }
         userDTO.get().setUsername(dto.getUsername());
+        userDTO.get().setAvatar(dto.getAvatar());
         return userSercive.save(userDTO.get());
     }
 
