@@ -13,14 +13,13 @@ import java.util.Base64;
 @Component
 public class UploadUtil {
     String root = System.getProperty("user.home");
-    public void writeFile(String base64, String path) throws UnsupportedEncodingException {
-        byte[] decodedString = Base64.getDecoder().decode(base64.getBytes("UTF-8"));
-
+    public void writeFile(String base64, String path) {
         String rootPath = root + File.separator +  path;
-        File file = new File(StringUtils.substringBeforeLast(rootPath, "/"));
+        File file = new File(StringUtils.substringBeforeLast(rootPath, File.separator));
         if (!file.exists()){
             file.mkdir();
         }
+        byte[] decodedString = Base64.getDecoder().decode(base64.getBytes());
         try(FileOutputStream  fileOuputStream  = new FileOutputStream(new File(rootPath))) {
             fileOuputStream.write(decodedString);
         } catch (IOException e) {

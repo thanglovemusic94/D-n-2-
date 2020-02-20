@@ -9,8 +9,8 @@
     file: <input type="file" id="uploadImage"/> <br />
     <a href="#">Upload</a>
 </div>
-<div th:with="urlAPi='/api/user/upload'">
-    <a th:href="@{${urlAPi}}"></a>
+<!--<div th:with="urlAPi='/api/user/upload'">-->
+<!--    <a th:href="${urlAPi}"></a>-->
 
 <script
         src="https://code.jquery.com/jquery-3.4.1.js"
@@ -23,17 +23,16 @@
 
     })
     $('#uploadImage').change(function () {
-        var file = $(this)[0].files[0]; //console.log($(this)[0].files[0].name)
+        var file = $(this)[0].files[0];
         var dataArray ={};
 
         if (file != undefined){
             var reader= new FileReader();
             reader.onload = function (e) {
                 dataArray['base64'] = e.target.result; // lay base64
-                dataArray['nameImage'] = file.name; // lay name
+                dataArray['name'] = file.name; // lay name
                 console.log(dataArray['base64'])
-                console.log(dataArray['nameImage'])
-                upload(dataArray)
+                console.log(dataArray['name'])
             }
             reader.readAsDataURL(file);
         }
@@ -41,14 +40,14 @@
 
     function upload(data) {
         $.ajax({
-            url:'http://localhost:8080/api/user/upload',
+            url:'/api/user/upload',
             contentType:"application/json",
             type:'POST',
-            data:JSON.stringify(data),
-            success: function(response) {
+            data:JSON.parse(data),
+            success:function(response) {
                 console.log(response);
             },
-            error: function(response){
+            error:function(response){
                 console.log(response);
             }
         })
