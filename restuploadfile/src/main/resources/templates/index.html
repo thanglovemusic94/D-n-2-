@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>index</title>
+</head>
+<body>
+<h2>Demo Spring Boot Upload File</h2>
+<div>
+    file: <input type="file" id="uploadImage"/> <br />
+    <a href="#">Upload</a>
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+    })
+    $('#uploadImage').change(function () {
+        console.log($(this)[0].files[0].name)
+
+        var file = $(this)[0].files[0];
+        if (file != undefined){
+            var reader= new FileReader();
+            reader.onload = function (e) {
+                file['base64'] = e.target.result;
+                console.log( "hehe" + file['base64'])
+            }
+            reader.readAsDataURL(file);
+        }
+    })
+
+    function upload() {
+        
+    }
+</script>
+</body>
+</html>
