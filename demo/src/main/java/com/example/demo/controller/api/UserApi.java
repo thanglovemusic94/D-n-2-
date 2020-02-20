@@ -59,10 +59,9 @@ public class UserApi {
     }
 
     @DeleteMapping("/{ids}")
-    public ResponseEntity<?> remove(@PathVariable List<String> ids) {
+    public void remove(@PathVariable List<String> ids) {
         // Do whatever you want with id
         userSercive.deleteAll(ids);
-        return ResponseEntity.noContent().build();
     }
 
 }
