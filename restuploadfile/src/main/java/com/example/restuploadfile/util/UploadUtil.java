@@ -1,5 +1,6 @@
 package com.example.restuploadfile.util;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.Base64;
 @Component
 public class UploadUtil {
     String root = System.getProperty("user.home");
+
     public void writeFile(String base64, String path) {
         String rootPath = root + File.separator +  path;
         File file = new File(StringUtils.substringBeforeLast(rootPath, File.separator));
@@ -26,4 +28,11 @@ public class UploadUtil {
             e.printStackTrace();
         }
     }
+
+    public String readFile(String path) throws IOException {
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(root+path));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        return  encodedString;
+    }
+
 }

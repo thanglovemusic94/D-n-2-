@@ -10,7 +10,6 @@ import java.io.File;
 
 @Component
 public class Converter {
-
     public  UserDTO toDTO(UserEntity userEntity) {
         ModelMapper modelMapper = new ModelMapper();
         UserDTO dto = modelMapper.map(userEntity, UserDTO.class);

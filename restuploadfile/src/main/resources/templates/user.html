@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>index</title>
+</head>
+<body>
+<h2>Demo Spring Boot Upload File</h2>
+<div>
+    <div th:each="user: ${user}">
+        <img th:src="${user.nameImage}" alt="">
+    </div>
+</div>
+<!--<div th:with="urlAPi='/api/user/upload'">-->
+<!--    <a th:href="@{${urlAPi}}"></a>-->
+
+</body>
+</html>
