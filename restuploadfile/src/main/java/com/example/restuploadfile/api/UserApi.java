@@ -52,7 +52,7 @@ public class UserApi {
         List<UserDTO> userDTOs = new ArrayList<>();
 
         for (UserEntity userEntity : listEntitys) {
-           userEntity.setNameImage(uploadUtil.readFile(userEntity.getNameImage()));
+            userEntity.setNameImage(uploadUtil.readFile(userEntity.getNameImage()));
         }
 
         for (UserEntity userEntity : listEntitys) {

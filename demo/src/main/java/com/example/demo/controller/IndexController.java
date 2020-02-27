@@ -11,7 +11,7 @@ public class IndexController {
 
     @GetMapping("")
     public String homePage() {
-        return view +"user";
+        return view + "user";
     }
 
 //    @GetMapping("/logout")

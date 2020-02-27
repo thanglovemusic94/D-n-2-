@@ -16,13 +16,13 @@ public class UploadUtil {
     String root = System.getProperty("user.home");
 
     public void writeFile(String base64, String path) {
-        String rootPath = root + File.separator +  path;
+        String rootPath = root + File.separator + path;
         File file = new File(StringUtils.substringBeforeLast(rootPath, File.separator));
-        if (!file.exists()){
+        if (!file.exists()) {
             file.mkdir();
         }
         byte[] decodedString = Base64.getDecoder().decode(base64.getBytes());
-        try(FileOutputStream  fileOuputStream  = new FileOutputStream(new File(rootPath))) {
+        try (FileOutputStream fileOuputStream = new FileOutputStream(new File(rootPath))) {
             fileOuputStream.write(decodedString);
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,9 +30,9 @@ public class UploadUtil {
     }
 
     public String readFile(String path) throws IOException {
-        byte[] fileContent = FileUtils.readFileToByteArray(new File(root+path));
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(root + path));
         String encodedString = Base64.getEncoder().encodeToString(fileContent);
-        return  encodedString;
+        return encodedString;
     }
 
 }

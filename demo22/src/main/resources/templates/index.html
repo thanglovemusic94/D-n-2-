@@ -6,7 +6,7 @@
 <body>
 <h2>Demo Spring Boot Upload File</h2>
 <div>
-    file: <input type="file" id="uploadImage"/> <br />
+    file: <input type="file" id="uploadImage"/> <br/>
     <a href="#">Upload</a>
 </div>
 <!--<div th:with="urlAPi='/api/user/upload'">-->
@@ -24,10 +24,10 @@
     })
     $('#uploadImage').change(function () {
         var file = $(this)[0].files[0];
-        var dataArray ={};
+        var dataArray = {};
 
-        if (file != undefined){
-            var reader= new FileReader();
+        if (file != undefined) {
+            var reader = new FileReader();
             reader.onload = function (e) {
                 dataArray['base64'] = e.target.result; // lay base64
                 dataArray['name'] = file.name; // lay name
@@ -40,14 +40,14 @@
 
     function upload(data) {
         $.ajax({
-            url:'/api/user/upload',
-            contentType:"application/json",
-            type:'POST',
-            data:JSON.parse(data),
-            success:function(response) {
+            url: '/api/user/upload',
+            contentType: "application/json",
+            type: 'POST',
+            data: JSON.parse(data),
+            success: function (response) {
                 console.log(response);
             },
-            error:function(response){
+            error: function (response) {
                 console.log(response);
             }
         })

@@ -3,15 +3,13 @@ package com.example.demo.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 @Data
-public class UserEntity implements Serializable {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

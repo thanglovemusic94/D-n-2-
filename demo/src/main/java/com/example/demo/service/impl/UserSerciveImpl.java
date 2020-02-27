@@ -51,14 +51,14 @@ public class UserSerciveImpl implements UserSercive {
         return userDTO;
     }
 
-    @Override
-    public void delete(Integer id) {
-        userRepository.deleteById(id);
-    }
+//    @Override
+//    public void delete(Integer id) {
+//        userRepository.deleteById(id);
+//    }
 
     @Override
     public void deleteAll(List<String> ids) {
-        for (String id: ids) {
+        for (String id : ids) {
             userRepository.deleteById(Integer.valueOf(id));
         }
     }

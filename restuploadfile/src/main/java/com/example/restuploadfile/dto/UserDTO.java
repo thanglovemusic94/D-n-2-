@@ -18,7 +18,7 @@ import java.io.Serializable;
 @ToString
 public class UserDTO implements Serializable {
     private Long id;
-//    private String base64; // truyen vao base64
+    //    private String base64; // truyen vao base64
     private String nameImage; // ten file
 
 //    public String getBase64() {

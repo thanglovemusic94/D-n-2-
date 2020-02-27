@@ -39,7 +39,7 @@ public class UserApi {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO update(@PathVariable Integer id, @RequestBody UserDTO dto){
+    public UserDTO update(@PathVariable Integer id, @RequestBody UserDTO dto) {
         Optional<UserDTO> userDTO = userSercive.findById(id);
         if (!userDTO.isPresent()) {
             System.out.println(" id  is not existed");
@@ -49,18 +49,17 @@ public class UserApi {
         return userSercive.save(userDTO.get());
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        Optional<UserDTO> userDTO = userSercive.findById(id);
-        if (!userDTO.isPresent()) {
-            System.out.println(" id  is not existed");
-        }
-         userSercive.delete(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void delete(@PathVariable Integer id) {
+//        Optional<UserDTO> userDTO = userSercive.findById(id);
+//        if (!userDTO.isPresent()) {
+//            System.out.println(" id  is not existed");
+//        }
+//        userSercive.delete(id);
+//    }
 
     @DeleteMapping("/{ids}")
     public void remove(@PathVariable List<String> ids) {
-        // Do whatever you want with id
         userSercive.deleteAll(ids);
     }
 

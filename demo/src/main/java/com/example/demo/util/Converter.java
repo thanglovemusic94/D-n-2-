@@ -4,8 +4,6 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.UserEntity;
 import org.modelmapper.ModelMapper;
 
-import java.util.Optional;
-
 public class Converter {
 
     public static UserDTO toDTO(UserEntity userEntity) {
@@ -19,7 +17,6 @@ public class Converter {
         UserEntity entity = modelMapper.map(userDTO, UserEntity.class);
         return entity;
     }
-
 
 
 }
