@@ -3,14 +3,23 @@ package com.java.banhang.service;
 import com.java.banhang.dto.PageResponse;
 import com.java.banhang.dto.ProductDTO;
 import com.java.banhang.entity.ProductEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductSercive {
-    List<ProductEntity> getAll(int page, int size);;
+    Page<ProductEntity> findAll(Pageable pageable);
+
+    Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable);
+
     Optional<ProductDTO> findById(int id);
+
     Optional<ProductDTO> findByTensanpham(String username);
+
     ProductDTO save(ProductDTO UserDTO);
-    void deleteAll(List<String> ids);
+
+    void deleteList(List<String> ids);
+    void deleteAll();
 }

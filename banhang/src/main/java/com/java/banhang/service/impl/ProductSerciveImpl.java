@@ -1,7 +1,6 @@
 package com.java.banhang.service.impl;
 
 
-import com.java.banhang.dto.PageResponse;
 import com.java.banhang.dto.ProductDTO;
 import com.java.banhang.entity.ProductEntity;
 import com.java.banhang.repository.ProductRepository;
@@ -9,7 +8,7 @@ import com.java.banhang.service.ProductSercive;
 import com.java.banhang.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,10 +24,13 @@ public class ProductSerciveImpl implements ProductSercive {
     private Converter converter;
 
     @Override
-    public List<ProductEntity> getAll(int page, int size) {
-        List<ProductEntity> listEntity =  productRepository.getAll(PageRequest.of(page, size));
+    public Page<ProductEntity> findAll(Pageable pageable) {
+      return productRepository.findAll(pageable);
+    }
 
-        return listEntity;
+    @Override
+    public Page<ProductEntity> findAllByTensanpham(String tensanpham, Pageable pageable) {
+        return productRepository.findAllByTensanpham(tensanpham, pageable);
     }
 
 
@@ -55,9 +57,14 @@ public class ProductSerciveImpl implements ProductSercive {
     }
 
     @Override
-    public void deleteAll(List<String> ids) {
+    public void deleteList(List<String> ids) {
         for (String id : ids) {
             productRepository.deleteById(Integer.valueOf(id));
         }
+    }
+
+    @Override
+    public void deleteAll() {
+        productRepository.deleteAll();
     }
 }

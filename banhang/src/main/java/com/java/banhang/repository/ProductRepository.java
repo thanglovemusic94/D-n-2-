@@ -11,5 +11,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
     ProductEntity findByTensanpham(String tensanpham);
-    List<ProductEntity> getAll(Pageable pageable);
+    Page<ProductEntity> findAll(Pageable pageable);
+    Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable);
+
 }
