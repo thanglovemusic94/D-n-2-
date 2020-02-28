@@ -29,8 +29,8 @@ public class ProductSerciveImpl implements ProductSercive {
     }
 
     @Override
-    public Page<ProductEntity> findAllByTensanpham(String tensanpham, Pageable pageable) {
-        return productRepository.findAllByTensanpham(tensanpham, pageable);
+    public Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable) {
+        return productRepository.findAllByTensanphamContaining(tensanpham, pageable);
     }
 
 
