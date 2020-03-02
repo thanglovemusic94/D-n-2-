@@ -21,18 +21,17 @@ public class ProductApi {
     private ProductSercive productSercive;
 
     @GetMapping
-    public PageResponse<ProductEntity> getAll(@RequestParam(value = "page", defaultValue = "1") int page,
+    public PageResponse<ProductDTO> getAll(@RequestParam(value = "page", defaultValue = "1") int page,
                                               @RequestParam(value = "size", defaultValue = "10") int size) {
         return productSercive.findAll(page, size);
     }
 
     @GetMapping("/search_name")
-    public Page<ProductEntity> getAllByTenSanPham(
-            @RequestParam(value = "tensanpham", required = true) String tensanpham,
+    public PageResponse<ProductDTO> getAllByTenSanPham(
+            @RequestParam(value = "tensanpham") String tensanpham,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "size", defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page-1, size);
-        return productSercive.findAllByTensanphamContaining(tensanpham,pageable);
+        return productSercive.findAllByTensanphamContaining(tensanpham,page,size);
     }
 
     @PostMapping
@@ -43,14 +42,14 @@ public class ProductApi {
 
 
     @GetMapping("/{id}")
-    public Optional<ProductDTO> findById(@PathVariable Integer id) {
-        Optional<ProductDTO> productDTO = Optional.ofNullable(productSercive.findById(id).get());
-        return productDTO;
+    public Optional<ProductDTO> findById(@PathVariable("id") Integer id) {
+        System.out.println("hehe");
+        return productSercive.findById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO update(@PathVariable Integer id, @RequestBody ProductDTO dto) {
+    public ProductDTO update(@PathVariable("id") Integer id, @RequestBody ProductDTO dto) {
         Optional<ProductDTO> productDTO = Optional.ofNullable(productSercive.findById(id).get());
         if (!productDTO.isPresent()) {
             System.out.println(" id  khong tồn tại");
@@ -66,7 +65,7 @@ public class ProductApi {
     }
 
     @DeleteMapping("/{ids}")
-    public void remove(@PathVariable List<String> ids) {
+    public void remove(@PathVariable("ids") List<String> ids) {
         productSercive.deleteList(ids);
     }
 

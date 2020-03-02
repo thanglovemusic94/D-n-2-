@@ -16,5 +16,5 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "nameImage")
-    private String nameImage; // luu duong dan file
+    private String path; // luu duong dan file
 }

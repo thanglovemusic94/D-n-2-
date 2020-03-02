@@ -11,13 +11,11 @@ import java.util.Optional;
 
 public interface ProductSercive {
 
-    PageResponse<ProductEntity> findAll(int page, int size);
+    PageResponse<ProductDTO> findAll(int page, int size);
 
-    Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable);
+    PageResponse<ProductDTO> findAllByTensanphamContaining(String tensanpham, int page, int size);
 
     Optional<ProductDTO> findById(int id);
-
-    Optional<ProductDTO> findByTensanpham(String username);
 
     ProductDTO save(ProductDTO UserDTO);
 

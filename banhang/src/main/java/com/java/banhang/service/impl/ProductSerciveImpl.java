@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,15 +28,27 @@ public class ProductSerciveImpl implements ProductSercive {
 
 
     @Override
-    public PageResponse<ProductEntity> findAll(int page , int size) {
+    public PageResponse<ProductDTO> findAll(int page , int size) {
         Pageable pageable = PageRequest.of(page-1, size);
         Page<ProductEntity> content = productRepository.findAll(pageable);
-      return new PageResponse<>(content);
+
+        List<ProductDTO> ListDTO = new ArrayList<>();
+        for (ProductEntity entity: content.getContent()) {
+            ListDTO.add(converter.toDTO(entity));
+        }
+      return new PageResponse<>(ListDTO, content.getTotalPages(), content.getTotalElements(), content.getNumber(), content.getSize());
     }
 
+
     @Override
-    public Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable) {
-        return productRepository.findAllByTensanphamContaining(tensanpham, pageable);
+    public PageResponse<ProductDTO> findAllByTensanphamContaining(String tensanpham, int page , int size) {
+        Pageable pageable = PageRequest.of(page-1, size);
+        Page<ProductEntity> content = productRepository.findAllByTensanphamContaining(tensanpham,pageable);
+        List<ProductDTO> ListDTO = new ArrayList<>();
+        for (ProductEntity entity: content.getContent()) {
+            ListDTO.add(converter.toDTO(entity));
+        }
+        return new PageResponse<>(ListDTO, content.getTotalPages(), content.getTotalElements(), content.getNumber(), content.getSize());
     }
 
 
@@ -43,15 +56,11 @@ public class ProductSerciveImpl implements ProductSercive {
     public Optional<ProductDTO> findById(int id) {
         ProductEntity ProductEntity = productRepository.findById(id).get();
         ProductDTO ProductDTO = converter.toDTO(ProductEntity);
+
         return Optional.ofNullable(ProductDTO);
     }
 
-    @Override
-    public Optional<ProductDTO> findByTensanpham(String tensanpham) {
-        ProductEntity ProductEntity = productRepository.findByTensanpham(tensanpham);
-        ProductDTO ProductDTO = converter.toDTO(ProductEntity);
-        return Optional.ofNullable(ProductDTO);
-    }
+
 
     @Override
     public ProductDTO save(ProductDTO ProductDTO) {

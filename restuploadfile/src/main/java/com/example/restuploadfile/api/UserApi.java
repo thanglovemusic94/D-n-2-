@@ -35,40 +35,21 @@ public class UserApi {
     private UploadUtil uploadUtil;
 
 
-//    @PostMapping("/upload")
-//    public ResponseEntity<?> uploadFile(@RequestBody UserDTO userDTO) {
-//        String path = File.separator + "image" + File.separator + userDTO.getNameImage();
-////        uploadUtil.writeFile(userDTO.getBase64(), path);
-//        UserEntity userEntity = converter.toEntity(userDTO);
-//        userEntity.setNameImage(path);
-//        userRepository.save(userEntity);
-//        return ResponseEntity.ok().build();
-//    }
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadFile(@RequestBody UserDTO userDTO) {
+        String path = File.separator + "image" + File.separator + userDTO.getNameImage();
+        uploadUtil.writeFile(userDTO.getBase64(), path);
 
-    @GetMapping("/upload")
-//    public ResponseEntity<List<UserDTO>> uploadFile1(Model model) throws IOException {
+        UserEntity userEntity = converter.toEntity(userDTO);
+        userEntity.setPath(path);
+        userRepository.save(userEntity);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/view")
     public String uploadFile1(Model model) throws IOException {
         List<UserEntity> listEntitys = userRepository.findAll();
-        List<UserDTO> userDTOs = new ArrayList<>();
-
-        for (UserEntity userEntity : listEntitys) {
-            userEntity.setNameImage(uploadUtil.readFile(userEntity.getNameImage()));
-        }
-
-        for (UserEntity userEntity : listEntitys) {
-            UserDTO userDTO = converter.toDTO(userEntity);
-            userDTOs.add(userDTO);
-        }
-
-        model.addAttribute("user", userDTOs);
-
-//        for (UserDTO userDTO : userDTOs) {
-//            String base64 = uploadUtil.readFile(userDTO.getNameImage());
-//            userDTO.setBase64(base64);
-//            System.out.println(userDTO.toString());
-//        }
-
-//        return new ResponseEntity<List<UserDTO>>(userDTOs, HttpStatus.OK);
+        model.addAttribute("user", listEntitys);
         return "user";
     }
 }
