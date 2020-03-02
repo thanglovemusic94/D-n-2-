@@ -1,6 +1,7 @@
 package com.java.banhang.service.impl;
 
 
+import com.java.banhang.dto.PageResponse;
 import com.java.banhang.dto.ProductDTO;
 import com.java.banhang.entity.ProductEntity;
 import com.java.banhang.repository.ProductRepository;
@@ -8,6 +9,7 @@ import com.java.banhang.service.ProductSercive;
 import com.java.banhang.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +25,12 @@ public class ProductSerciveImpl implements ProductSercive {
     @Autowired
     private Converter converter;
 
+
     @Override
-    public Page<ProductEntity> findAll(Pageable pageable) {
-      return productRepository.findAll(pageable);
+    public PageResponse<ProductEntity> findAll(int page , int size) {
+        Pageable pageable = PageRequest.of(page-1, size);
+        Page<ProductEntity> content = productRepository.findAll(pageable);
+      return new PageResponse<>(content);
     }
 
     @Override

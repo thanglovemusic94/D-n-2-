@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Integer>, ProductRepositoryCustom {
     ProductEntity findByTensanpham(String tensanpham);
     Page<ProductEntity> findAll(Pageable pageable);
     Page<ProductEntity> findAllByTensanphamContaining(String tensanpham, Pageable pageable);
