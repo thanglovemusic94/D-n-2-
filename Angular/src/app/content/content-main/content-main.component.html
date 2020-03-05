@@ -1,0 +1,205 @@
+<div class="col-md-12">
+  <div class="widget-box">
+    <div class="widget-header widget-header-flat">
+      <h4 class="widget-title lighter">
+        Danh Sách Sản Phẩm
+      </h4>
+    </div>
+
+    <div class="widget-body">
+      <div class="widget-main padding-4">
+        <div class="row">
+          <div class="col-sm-8 ">
+            <form class="form-horizontal" id="sample-form">
+              <div class="form-group has-info">
+                <label for="inputInfo" class="col-xs-12 col-sm-4 control-label no-padding-right">Tên Sản Phẩm</label>
+
+                <div class="col-xs-12 col-sm-8">
+																	<span class="block input-icon input-icon-right">
+																		<input type="text" id="inputInfo" class="width-100"/>
+																		<i class="ace-icon fa fa-info-circle"></i>
+																	</span>
+                </div>
+                <!--              <div class="help-block col-xs-12 col-sm-reset inline"> (validate) </div>-->
+              </div>
+            </form>
+
+          </div>
+          <div class="col-sm-8 ">
+            <form class="form-horizontal" id="sample-form">
+              <div class="form-group has-info">
+                <label for="inputInfo" class="col-xs-12 col-sm-4 control-label no-padding-right">Từ Ngày</label>
+
+                <div class="col-xs-12 col-sm-8">
+                  <div class="input-group">
+                    <input id="date-timepicker1" type="text" class="form-control">
+                    <span class="input-group-addon">
+																<i class="fa fa-clock-o bigger-110"></i>
+															</span>
+                  </div>
+                </div>
+                <!--              <div class="help-block col-xs-12 col-sm-reset inline"> (validate) </div>-->
+              </div>
+            </form>
+
+          </div>
+          <div class="col-sm-8 ">
+            <form class="form-horizontal" id="sample-form">
+              <div class="form-group has-info">
+                <label for="inputInfo" class="col-xs-12 col-sm-4 control-label no-padding-right">Đến Ngày</label>
+
+                <div class="col-xs-12 col-sm-8">
+                  <div class="input-group">
+                    <input id="date-timepicker1" type="text" class="form-control">
+                    <span class="input-group-addon">
+																<i class="fa fa-clock-o bigger-110"></i>
+															</span>
+                  </div>
+                </div>
+                <!--              <div class="help-block col-xs-12 col-sm-reset inline"> (validate) </div>-->
+              </div>
+            </form>
+
+          </div>
+
+          <div class="col-sm-8 col-lg-offset-1 center">
+            <button type="button" class="btn btn-sm btn-success">
+              Tìm Kiếm
+              <i class="ace-icon fa fa-arrow-right  "></i>
+            </button>
+          </div>
+
+
+        </div>
+
+        <div class="row " style="margin-top: 2em">
+          <div class="col-xs-12 ">
+            <table id="simple-table" class="table  table-bordered table-hover">
+              <thead>
+              <tr>
+                <th class="center">
+                  <label class="pos-rel">
+                    <input type="checkbox" class="ace">
+                    <span class="lbl"></span>
+                  </label>
+                </th>
+                <th class="detail-col">STT</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Ảnh Sản Phẩm</th>
+                <th>Giá</th>
+                <th>Giảm giá</th>
+
+                <th class="hidden-480">Khuyến Mãi</th>
+
+                <th>
+                  <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                  Ngày Cập Nhật
+                </th>
+                <th>
+                  <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                  Ngày Tạo
+                </th>
+                <th class="hidden-480">Trang Thái</th>
+                <th class="hidden-480">Hành Động</th>
+
+
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr>
+                <td class="center">
+                  <label class="pos-rel">
+                    <input type="checkbox" class="ace">
+                    <span class="lbl"></span>
+                  </label>
+                </td>
+
+                <td class="center">
+                  <div class="action-buttons">
+                    <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                      <i class="ace-icon fa fa-angle-double-down"></i>
+                      <span class="sr-only">Details</span>
+                    </a>
+                  </div>
+                </td>
+
+                <td>
+                  <a href="#">ace.com</a>
+                </td>
+                <td></td>
+                <td>$45</td>
+                <td>$45</td>
+                <td class="hidden-480">3,330</td>
+                <td>Feb 12</td>
+                <td>Feb 12</td>
+
+                <td class="hidden-480">
+                  <span class="label label-sm label-success arrowed-in arrowed-in-right">còn hàng</span>
+                </td>
+
+                <td>
+                  <div class="hidden-sm hidden-xs btn-group">
+                    <button class="btn btn-xs btn-success">
+                      <i class="ace-icon fa fa-check bigger-120"></i>
+                    </button>
+
+                    <button class="btn btn-xs btn-info">
+                      <i class="ace-icon fa fa-pencil bigger-120"></i>
+                    </button>
+
+                    <button class="btn btn-xs btn-danger">
+                      <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                    </button>
+
+                    <button class="btn btn-xs btn-warning">
+                      <i class="ace-icon fa fa-flag bigger-120"></i>
+                    </button>
+                  </div>
+
+                  <div class="hidden-md hidden-lg">
+                    <div class="inline pos-rel">
+                      <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                        <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                      </button>
+
+                      <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                        <li>
+                          <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+																			<span class="blue">
+																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																			</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+																			<span class="green">
+																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																			</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+																			<span class="red">
+																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																			</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+
+              </tbody>
+            </table>
+          </div><!-- /.span -->
+        </div>
+      </div><!-- /.widget-main -->
+    </div><!-- /.widget-body -->
+  </div><!-- /.widget-box -->
+
+</div>
