@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component("Converter")
-public class Converter {
+public class Converter<T> {
 
     public ProductDTO toDTO(ProductEntity userEntity) {
         ModelMapper modelMapper = new ModelMapper();

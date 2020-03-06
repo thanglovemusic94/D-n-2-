@@ -2,6 +2,7 @@ package com.example.restuploadfile.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -13,10 +14,12 @@ import java.util.Base64;
         */
 @Component
 public class UploadUtil {
-    String root = System.getProperty("user.home");
+    //String root = System.getProperty("user.home");\
+    @Value("${upload.path}")
+    private String pathFolder;
 
     public void writeFile(String base64, String path) {
-        String rootPath = root + File.separator + path;
+        String rootPath = pathFolder + File.separator + path;
         File file = new File(StringUtils.substringBeforeLast(rootPath, File.separator));
         if (!file.exists()) {
             file.mkdir();
@@ -30,7 +33,7 @@ public class UploadUtil {
     }
 
     public String readFile(String path) throws IOException {
-        byte[] fileContent = FileUtils.readFileToByteArray(new File(root + path));
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(pathFolder + path));
         String encodedString = Base64.getEncoder().encodeToString(fileContent);
         return encodedString;
     }

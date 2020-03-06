@@ -5,15 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,8 +18,14 @@ public class ProductDTO implements Serializable {
     @JsonProperty("id")
     private Integer id;
 
-    @JsonProperty("tensanpham_ahihi")
+    @JsonProperty("tensanpham")
     private String tensanpham;
+
+    @JsonProperty("image")
+    private MultipartFile image;
+
+    @JsonProperty("imageBase64")
+    private String imageBase64;
 
     @JsonProperty("gia")
     private String gia;
@@ -35,9 +36,4 @@ public class ProductDTO implements Serializable {
     @JsonProperty("khuyenmai")
     private Long khuyenmai;
 
-    @JsonProperty("ngaydang")
-    private Timestamp ngaydang;
-
-    @JsonProperty("ngaycapnhat")
-    private Timestamp ngaycapnhat;
 }

@@ -48,6 +48,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
             "/font/**",
             "/swf/**",
 
+            "/static/**",
+
+
             "/login*",
             "/api/**",
             "/**",
@@ -60,7 +63,8 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("USER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated()

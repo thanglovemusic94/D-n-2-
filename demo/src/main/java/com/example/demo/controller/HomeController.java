@@ -5,27 +5,16 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping({"/"})
 public class HomeController {
 
-    final String view = "user/";
-    final String layout = "fragment/";
-    final String admin = "admin/";
-
-    @GetMapping("")
+    @GetMapping("/")
     public String index() {
-        return layout + "web";
+        return "layout_user";
     }
 
     @GetMapping("/login")
     public String login() {
-        return view + "login";
-    }
-
-
-    @GetMapping("/about")
-    public String about() {
-        return "about";
+        return "login";
     }
 
 }

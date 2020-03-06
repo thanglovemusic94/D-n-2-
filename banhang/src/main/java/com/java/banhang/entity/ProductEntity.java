@@ -16,7 +16,7 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "product")
 @Data
-public class ProductEntity implements Serializable {
+public class ProductEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,9 @@ public class ProductEntity implements Serializable {
 
     @Column(name = "tensanpham")
     private String tensanpham;
+
+    @Column(name = "image")
+    private String image;
 
     @Column(name = "gia")
     private String gia;
