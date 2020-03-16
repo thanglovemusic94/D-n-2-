@@ -46,7 +46,13 @@ public class UserApi {
         return userSercive.save(userDTO.get());
     }
 
-//    @DeleteMapping("/{id}")
+
+    @DeleteMapping("/{ids}")
+    public void remove(@PathVariable List<String> ids) {
+        userSercive.deleteAll(ids);
+    }
+
+    //    @DeleteMapping("/{id}")
 //    public void delete(@PathVariable Integer id) {
 //        Optional<UserDTO> userDTO = userSercive.findById(id);
 //        if (!userDTO.isPresent()) {
@@ -54,10 +60,4 @@ public class UserApi {
 //        }
 //        userSercive.delete(id);
 //    }
-
-    @DeleteMapping("/{ids}")
-    public void remove(@PathVariable List<String> ids) {
-        userSercive.deleteAll(ids);
-    }
-
 }
